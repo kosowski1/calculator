@@ -1,10 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import {useRef} from 'react';
+import {sum} from './helpers/calculator';
 
 function App() {
+  const number1 = useRef(null);
+  const number2 = useRef(null);
+  const submitHandler = (event) =>{
+    event.preventDefault();
+
+    console.log(number1, number2);
+  }
   return (
     <div className="App">
-      <form>
+      <form onSubmit={(event) => submitHandler(event)}>
         <div>
           <label htmlFor="number1">Número 1</label>
           <input 
@@ -13,6 +21,7 @@ function App() {
           id="number1" 
           placeholder="insira o primeiro número" 
           required
+          ref={number1}
           />
         </div>
         <div>
@@ -23,6 +32,7 @@ function App() {
           id="number2" 
           placeholder="insira o segundo número" 
           required
+          ref={number2}
           />
         </div>
         <div>
